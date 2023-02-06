@@ -53,9 +53,9 @@ var cityPop = [
 var i=0;
 
 while (i < cityPop.length) {
-    var tr = document.createElement("tr");
+    var tr = document.createElement("tr"); //tr is table row
 
-    var city = document.createElement("td");
+    var city = document.createElement("td"); // td is a data cell within the table
     city.innerHTML = cityPop[i].city;
     tr.appendChild(city);
 
@@ -67,26 +67,26 @@ while (i < cityPop.length) {
 
     i++;
 };
-    document.querySelector('#myDiv').appendChild(table);
+    document.querySelector('#myDiv').appendChild(table); //adds the whole table to the div element myDiv
 
 	
-	
+// call functions to add new column and add colors and pop up text
 addColumns(cityPop);
 addEvents();
 
-};
+}; //end of cities function
 
-
+// add columns
 function addColumns(cityPop){
     
     document.querySelectorAll("tr").forEach(function(row, i){
-
+		//row 0 is the header called City Size
     	if (i == 0){
 
     		row.insertAdjacentHTML('beforeend', '<th> City Size </th>');
     	} else {
 
-    		var citySize;
+    		var citySize; //variable citySize is defined by the if else loop
 
     		if (cityPop[i-1].population < 100000){
     			citySize = 'Small';
@@ -97,16 +97,18 @@ function addColumns(cityPop){
     		} else {
     			citySize = 'Large';
     		};
-
+			// adds citySize from the loop to the rows
 			row.insertAdjacentHTML('beforeend', citySize);
     	};
     });
 };
 
+// define addEvents function
 function addEvents(){
 
+	//select the table
 	table = document.querySelector("table")
-
+	//random colors appear when mouseover the table
 	table.addEventListener("mouseover", function(){
 		
 		var color = "rgb(";
@@ -127,16 +129,16 @@ function addEvents(){
 		table.style.color = color;
 		
 	});
-
+	//add event for clicking
 	function clickme(){
-
+		//function is to respond with an alert
 		alert('Hey, you clicked me!');
 	};
-
+	// add eventlistener to table. Click is the event and clickme is the response
 	table.addEventListener("click", clickme)
 };
 
-
+//run the initialize function when DOM content is loaded
 document.addEventListener('DOMContentLoaded', initialize);
 
 

@@ -74,3 +74,5 @@ while (i < cityPop.length) {
 
 
 document.addEventListener('DOMContentLoaded', initialize);
+
+// table is created with city and population
